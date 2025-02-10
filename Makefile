@@ -23,6 +23,7 @@ help:
 	$(info make all          - generate byte-code and autoloads)
 	$(info make lisp         - generate byte-code and autoloads)
 	$(info make redo         - re-generate byte-code and autoloads)
+	$(info make install      - install byte-code and autoloads)
 	$(info make clean        - remove generated files)
 	@printf "\n"
 
@@ -42,6 +43,9 @@ check-declare:
 	--eval "(check-declare-directory default-directory)"
 
 CLEAN  = $(ELCS) $(PKG)-autoloads.el
+
+install: lisp
+	install -m 644 -p *.el *.elc $(PREFIX)/share/emacs/site-lisp
 
 clean:
 	@printf " Cleaning...\n"
