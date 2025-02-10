@@ -11,6 +11,9 @@ DEPS += emacsql
 EMACS      ?= emacs
 EMACS_ARGS ?=
 
+PREFIX  := $(shell $(EMACS) -Q --batch --eval \
+	"(princ (expand-file-name \"../../../..\" data-directory))")
+
 LOAD_PATH  ?= $(addprefix -L ../,$(DEPS))
 LOAD_PATH  += -L .
 
