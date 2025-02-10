@@ -23,6 +23,7 @@ help:
 	$(info make all        -- Build lisp)
 	$(info make lisp       -- Build lisp)
 	$(info make redo       -- Build lisp from scratch)
+	$(info make install    -- Install byte-code and autoloads)
 	$(info make clean      -- Remove built files)
 	@printf "\n"
 
@@ -42,6 +43,9 @@ check-declare:
 	--eval "(check-declare-directory default-directory)"
 
 CLEAN = $(ELCS) $(PKG)-autoloads.el
+
+install: lisp
+	install -m 644 -p *.el *.elc $(PREFIX)/share/emacs/site-lisp
 
 clean:
 	@printf " Cleaning...\n"
